@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сменить язык | Secret.Kot</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('sk.png') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+        
+        .language-box {
+            background-color: rgba(255, 140, 0, 0.9);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+        
+        .language-title {
+            font-size: 24px;
+            margin-bottom: 25px;
+            color: #333;
+            font-weight: bold;
+        }
+        
+        .language-option {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            margin: 10px 0;
+            background-color: rgba(255,255,255,0.2);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .language-option:hover {
+            background-color: rgba(255,255,255,0.4);
+            transform: translateX(5px);
+        }
+        
+        .language-flag {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+            border: 1px solid #333;
+        }
+        
+        .language-name {
+            font-size: 18px;
+            color: #333;
+            flex-grow: 1;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="language-box">
+        <div class="language-title">Change language</div>
+        
+        <div class="language-option" onclick="window.location.href='Glavnaia.html'">
+            <img src="russian-flag.png" class="language-flag" alt="Русский">
+            <div class="language-name">Русский</div>
+        </div>
+        
+        <div class="language-option" onclick="window.location.href='Eng-Glavnaia.html'">
+            <img src="english-flag.png" class="language-flag" alt="English">
+            <div class="language-name">English</div>
+        </div>
+    </div>
+</body>
+</html>

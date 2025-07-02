@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret.Kot - Пасхалочка</title>
+    <style>
+        @font-face {
+            font-family: 'Ciutadella';
+            src: local('CiutadellaDisplay-XBd'),
+                url('CiutadellaDisplay-XBd.woff') format('woff');
+            font-weight: 800;
+            font-style: italic;
+            font-display: swap;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #FE3231;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: rgb(255, 140, 0);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            flex-shrink: 0;
+        }
+
+        .logo {
+            font-family: 'Ciutadella', Arial, sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            font-style: italic;
+            color: #333;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-buttons a {
+            text-decoration: none;
+            color: #333;
+            padding: 8px 15px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-family: Arial, sans-serif;
+        }
+
+        .nav-buttons a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        main {
+            margin-top: 90px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="poster.png" class="logo-img" alt="Poster">
+            <div class="logo">SECRET.KOT</div>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="Glavnaia.html" id="main-link">Главная</a>
+            <a href="O_nas.html">О нас</a>
+            <a href="Korzina.html">Корзина</a>
+            <a href="Profile.html">Профиль</a>
+        </div>
+    </header>
+
+    <main>
+                            (Этот сайт пережил все тесты на прочность)
+    </main>
+
+</body>
+</html>

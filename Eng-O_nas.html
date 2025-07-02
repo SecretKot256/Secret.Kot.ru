@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret.Kot - О нас</title>
+    <style>
+        @font-face {
+            font-family: 'Ciutadella';
+            src: local('CiutadellaDisplay-XBd'),
+                url('CiutadellaDisplay-XBd.woff') format('woff');
+            font-weight: 800;
+            font-style: italic;
+            font-display: swap;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: #FE3231;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 20px;
+            background-color: rgb(255, 140, 0);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: 'Ciutadella', Arial, sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            font-style: italic;
+            color: #333;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: absolute;
+            left: 10%;
+            transform: translateX(-50%);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+            margin-left: auto;
+        }
+
+        .nav-buttons a {
+            text-decoration: none;
+            color: #333;
+            padding: 8px 15px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-family: Arial, sans-serif;
+        }
+
+        .nav-buttons a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Языковая коробочка для десктопа */
+        .language-box {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 5px 10px 5px 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            margin-left: 10px;
+        }
+
+        .language-box:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        .language-flag {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid #333;
+        }
+
+        .language-name {
+            font-size: 14px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Языковая коробочка для мобильных */
+        .mobile-language-box {
+            display: none;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mobile-language-box img {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid #333;
+        }
+
+        .search-container {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 250px;
+            background-color: rgb(255, 140, 0);
+            top: 79px;
+        }
+
+        .search-input {
+            padding: 10px 10px;
+            border-radius: 0px;
+            border: 2px solid #333333;
+            width: 250px;
+            transition: all 0.3s;
+            font-size: 14px;
+            background-color: rgb(255, 140, 0);
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 250px;
+            background: rgb(255, 100, 0);
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: none;
+        }
+
+        .search-result-item {
+            padding: 10px 15px;
+            border-bottom: solid #ffffff00;
+            cursor: pointer;
+        }
+
+        .search-result-item:hover {
+            background: rgb(255, 100, 0);
+            color: rgb(255, 225, 0);
+            border-radius: 0 0 10px 10px;
+        }
+
+        main {
+            margin-top: 70px;
+        }
+
+        /* Секции */
+        .section {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .section-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            z-index: -1;
+        }
+
+        /* Блоки с картинками */
+        .content-box {
+            background: rgba(255, 140, 0, 0.9);
+            border: 3px solid white;
+            border-radius: 10px;
+            padding: 30px;
+            max-width: 700px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        /* Фикс для второй секции */
+        #section2 .content-box {
+            flex-direction: row-reverse;
+        }
+
+        .box-text {
+            flex: 1;
+        }
+
+        .box-image {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        /* Выравнивание */
+        .center-align {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 10%;
+        }
+
+        /* Секция контактов */
+        .contact-container {
+            text-align: center;
+            width: 100%;
+        }
+
+        .contact-title {
+            font-family: 'Ciutadella', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: white;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 0 #333;
+        }
+
+        .contact-items {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            background: rgba(255, 140, 0, 0.9);
+            border: 3px solid white;
+            border-radius: 10px;
+            padding: 25px;
+            min-width: 250px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .contact-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 140, 0, 0.7);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            height: 50px;
+        }
+
+        .contact-icon img {
+            height: 100%;
+            width: auto;
+        }
+
+        .contact-label {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .contact-value {
+            font-size: 1.1rem;
+            word-break: break-all;
+        }
+
+        h1 {
+            font-family: 'Ciutadella', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: white;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 0 #333;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .content-box,
+            #section2 .content-box {
+                flex-direction: column;
+                padding: 20px;
+                width: 90%;
+            }
+
+            .box-image {
+                width: 120px;
+                height: 120px;
+                margin-bottom: 15px;
+            }
+
+            h1,
+            .contact-title {
+                font-size: 1.8rem;
+            }
+
+            .contact-items {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .contact-item {
+                width: 90%;
+            }
+        }
+
+        /* Адаптивность */
+        @media (max-width: 650px) {
+            .logo {
+                position: static;
+                transform: none;
+                text-align: center;
+                width: 100%;
+                padding: 10px;
+
+            }
+
+            .nav-buttons {
+                display: none;
+            }
+
+            .language-box {
+                display: block;
+            }
+
+            .mobile-language-box {
+                display: flex;
+                top: 20%;
+            }
+
+            .search-container {
+                top: 25%;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 250px;
+            }
+
+            .search-input {
+                width: 250px;
+            }
+        }
+
+        @media (min-width: 100px) {
+            header {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .logo {
+                margin-bottom: 10px;
+                font-size: 32px;
+                left: 110px;
+            }
+
+            .search-container {
+                top: 100%;
+                width: 250px;
+            }
+
+            .main-title {
+                font-size: 8vw;
+            }
+
+            .center-button {
+                min-width: 250px;
+                font-size: 24px;
+                padding: 15px 30px;
+            }
+
+            .scroll-down-btn {
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="logo">SECRET.KOT</div>
+
+        <!-- Языковая коробочка для мобильных -->
+        <div class="mobile-language-box" onclick="window.location.href='Language_Switcher.html'">
+            <img src="russian-flag.png" alt="Русский">
+        </div>
+
+        <div class="nav-buttons">
+            <a href="Glavnaia.html">Главная</a>
+            <a href="O_nas.html">О нас</a>
+            <a href="Korzina.html">Корзина</a>
+            <a href="Profile.html">Профиль</a>
+
+            <!-- Языковая коробочка для десктопа -->
+            <div class="language-box" onclick="window.location.href='Language_Switcher.html'">
+                <img src="russian-flag.png" class="language-flag" alt="Русский">
+                <div class="language-name">RU</div>
+            </div>
+
+        </div>
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Поиск товаров..." id="globalSearch">
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Секция 1: Наша команда -->
+        <section class="section" id="section1">
+            <img src="sk.png" alt="Secret.Kot" class="section-bg">
+            <div class="center-align">
+                <div class="content-box">
+                    <div class="box-text">
+                        <h1>НАША КОМАНДА</h1>
+                        <p>Мы — безумные разработчики, которые совмещают любовь к котам и странному юмору.</p>
+                        <p>Наш проект Secret.Kot создан, чтобы удивлять, веселить и иногда пугать.</p>
+                    </div>
+                    <img src="command.png" alt="Наша команда" class="box-image">
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция 2: Что такое Secret.Kot -->
+        <section class="section" id="section2">
+            <img src="sk2.png" alt="Secret.Kot" class="section-bg">
+            <div class="center-align">
+                <div class="content-box">
+                    <img src="Secret.Kot.png" alt="Secret.Kot" class="box-image">
+                    <div class="box-text">
+                        <h1>ЧТО ТАКОЕ SECRET.KOT?</h1>
+                        <p>Это место, где странность встречается с очарованием. Мы создаём необычные вещи для необычных
+                            людей.</p>
+                        <p>Коты — наши вдохновители, баги — наши друзья, а юмор — наш двигатель.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция 3: Контакты -->
+        <section class="section" id="section3">
+            <img src="sk3.png" alt="Secret.Kot" class="section-bg">
+            <div class="center-align">
+                <div class="contact-container">
+                    <h2 class="contact-title">Contact us</h2>
+                    <div class="contact-items">
+                        <!-- Телефон -->
+                        <div class="contact-item" onclick="window.location.href=''">
+                            <div class="contact-icon">📱</div>
+                            <div class="contact-label">Phone number</div>
+                            <div class="contact-value">+7 (908) 870 40 99</div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="contact-item" onclick="window.location.href=''">
+                            <div class="contact-icon">✉</div>
+                            <div class="contact-label">Email</div>
+                            <div class="contact-value">SecretKotOfficial@yandex.com</div>
+                        </div>
+
+                        <!-- WhatsApp -->
+                        <div class="contact-item" onclick="window.location.href='https://chat.whatsapp.com/CcxG64tCq312bl262O8iyJ'">
+                            <div class="contact-icon">
+                                <img src="whatsapp.webp" alt="WhatsApp">
+                            </div>
+                            <div class="contact-label">WhatsApp group</div>
+                            <div class="contact-value">(Tap on me!)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        // Данные для поиска
+        const searchData = [
+            { title: "Main Page", url: "Eng-Glavnaia.html" },
+            { title: "About Us", url: "Eng-O_nas.html" },
+            { title: "Your Basket", url: "Eng-Korzina.html" },
+            { title: "Profile", url: "Eng-Profile.html" },
+            { title: "Help", url: "Eng-Help.html" },
+            { title: "Change language", url: "Eng-Launguage_Switcher.html" },
+            { title: "EasterEgg", url: "Eng-Test.html" },
+            { title: "", url: "" },
+            { title: "", url: "" },
+            { title: "", url: "" },
+            { title: "", url: "" },
+            { title: "", url: "" },
+            { title: "", url: "" },
+            { title: "", url: "" },
+            { title: "", url: "" },
+            { title: "", url: "" },
+            { title: "", url: "" },
+            { title: "", url: "" },
+            { title: "", url: "" },
+            { title: "", url: "" },
+            { title: "", url: "" },
+            { title: "", url: "" },
+            { title: "", url: "" },
+            { title: "", url: "" },
+            { title: "", url: "" },  
+        ];
+
+        const searchInput = document.getElementById('globalSearch');
+        const searchResults = document.getElementById('searchResults');
+
+        searchInput.addEventListener('input', function () {
+            const query = this.value.toLowerCase();
+            searchResults.innerHTML = '';
+
+            if (query.length < 2) {
+                searchResults.style.display = 'none';
+                return;
+            }
+
+            const results = searchData.filter(item =>
+                item.title.toLowerCase().includes(query)
+            );
+
+            if (results.length > 0) {
+                results.forEach(item => {
+                    const resultItem = document.createElement('div');
+                    resultItem.className = 'search-result-item';
+                    resultItem.textContent = item.title;
+                    resultItem.addEventListener('click', () => {
+                        window.location.href = item.url;
+                    });
+                    searchResults.appendChild(resultItem);
+                });
+                searchResults.style.display = 'block';
+            } else {
+                const noResults = document.createElement('div');
+                noResults.className = 'search-result-item';
+                noResults.textContent = 'Ничего не найдено';
+                searchResults.appendChild(noResults);
+                searchResults.style.display = 'block';
+            }
+        });
+
+        // Скрываем результаты при клике вне поиска
+        document.addEventListener('click', function (e) {
+            if (!e.target.closest('.search-container')) {
+                searchResults.style.display = 'none';
+            }
+        });
+    </script>
+    <script>
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        document.getElementById('main-link').addEventListener('click', function (e) {
+            e.preventDefault();
+            scrollToSection('section1');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пасхалка от DeQStart</title>
+    <style>
+        @font-face {
+            font-family: 'Ciutadella';
+            src: local('CiutadellaDisplay-XBd'),
+                url('CiutadellaDisplay-XBd.woff') format('woff');
+            font-weight: 800;
+            font-style: italic;
+            font-display: swap;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #167011;
+            transition: background-color 0.5s;
+        }
+
+        body.dimmed {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: rgb(26, 135, 16);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Ciutadella', Arial, sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            font-style: italic;
+            color: #333;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-buttons a {
+            text-decoration: none;
+            color: #333;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: all 0.3s;
+            font-family: Arial, sans-serif;
+        }
+
+        .nav-buttons a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .main-title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Ciutadella', Arial, sans-serif;
+            font-size: 6vw;
+            font-weight: 800;
+            font-style: italic;
+            color: white;
+            text-shadow: 3px 3px 0 #000;
+            white-space: nowrap;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">DEQSTART-ПАСХАЛКА</div>
+        <div class="nav-buttons">
+            <a href="Glavnaia.html">Главная</a>
+            <a href="O_nas.html">О нас</a>
+            <a href="Korzina.html">Корзина</a>
+            <a href="Profile.html">Профиль</a>
+             <button id="myButton" class="dont-push-btn" 
+                    onmouseover="document.body.classList.add('dimmed')"
+                    onmouseout="document.body.classList.remove('dimmed')">
+                Демонлист
+            </button>
+            <script>
+    const button = document.getElementById('myButton');
+    const targetURL = 'https://demonlist.org/';
+
+  button.addEventListener('click', function() {
+    if (confirm('Вы перейдёте в гд демон-лист!                                                            Вы уверены?                                                                                     (От создателя: такая уродская кнопка сделана самим DeQStart)')) {
+      window.location.href = targetURL;
+    }
+  });
+</script>
+    </main>
+    
+        </div>
+    </header>
+
+    <main>
+        <div class="image-container" id="section1">
+            <img src="cognition.jpg" alt="Secret.Kot" class="main-image">
+            <div class="main-title"></div>
+        </div>
+
+        <div class="image-container" id="section2">
+            <img src="trotil.jpg" alt="Secret.Kot" class="main-image">
+        </div>
+
+        <div class="image-container" id="section3">
+            <img src="renevant.jpg" alt="Secret.Kot" class="main-image">
+        </div>
+</body>
+</html>
